@@ -141,10 +141,3 @@ Dependencies/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
-
-### SwiftPackageManager ###
-Packages
-.build/
-xcuserdata
-DerivedData/
-*.xcodeproj
