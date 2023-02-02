@@ -93,9 +93,9 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.myreactnativeproject"
+    namespace "com.dayblock"
     defaultConfig {
-        applicationId "com.myreactnativeproject"
+        applicationId "com.dayblock"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

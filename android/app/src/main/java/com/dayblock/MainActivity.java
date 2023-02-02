@@ -1,4 +1,4 @@
-package com.myreactnativeproject;
+package com.dayblock;
 
 import com.facebook.react.ReactActivity;
 import com.facebook.react.ReactActivityDelegate;
@@ -13,7 +13,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "MyReactNativeProject";
+    return "DayBlock";
   }
 
   /**
