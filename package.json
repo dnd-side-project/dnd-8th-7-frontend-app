@@ -3,10 +3,10 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "android": "react-native run-android --port 8088",
-    "ios": "react-native run-ios --port 8088",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "lint": "eslint .",
-    "start": "react-native start --port 8088",
+    "start": "react-native start",
     "ios:pod": "cd ios && pod install && cd ..",
     "android:signingReport": "cd android && ./gradlew signingReport && cd ..",
     "postinstall": "husky install",
