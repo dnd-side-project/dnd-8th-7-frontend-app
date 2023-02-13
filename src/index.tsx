@@ -1,11 +1,13 @@
-import React from 'react';
-import {View, Text} from 'react-native';
+import StackNavigation from '@/navigations/StackNavigation';
+import BottomSheetsProvider from '@/context/BottomSheetsProvider';
+import GlobalBottomSheets from './components/BottomSheet/GlobalBottomSheets';
 
 function App() {
   return (
-    <View>
-      <Text>app</Text>
-    </View>
+    <BottomSheetsProvider>
+      <StackNavigation />
+      <GlobalBottomSheets />
+    </BottomSheetsProvider>
   );
 }
 
