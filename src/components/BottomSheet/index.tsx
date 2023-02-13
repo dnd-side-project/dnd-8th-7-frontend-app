@@ -12,18 +12,18 @@ import {
   Text,
 } from 'react-native';
 
-interface Props {
-  modalVisible: boolean;
-  setModalVisible: (value: boolean) => void;
+export interface BottomSheetProps {
+  modalVisible?: boolean;
   title?: string;
+  onClose?: () => void;
 }
 
-const BottomSheet = ({
-  modalVisible,
-  setModalVisible,
+const BottomSheetContainer = ({
+  modalVisible = false,
   title,
   children,
-}: PropsWithChildren<Props>) => {
+  onClose,
+}: PropsWithChildren<BottomSheetProps>) => {
   const screenHeight = Dimensions.get('screen').height;
   const panY = useRef(new Animated.Value(screenHeight)).current;
   const translateY = panY.interpolate({
@@ -62,7 +62,7 @@ const BottomSheet = ({
 
   const closeModal = () => {
     closeBottomSheet.start(() => {
-      setModalVisible(false);
+      onClose?.();
     });
   };
 
@@ -148,4 +148,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default BottomSheet;
+export default BottomSheetContainer;
