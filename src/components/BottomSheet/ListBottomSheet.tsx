@@ -1,10 +1,16 @@
-import {Text} from 'react-native';
-import BottomSheet, {BottomSheetProps} from 'components/BottomSheet';
+import {ReactNode} from 'react';
+import {StyleSheet, Text, TouchableHighlight, View} from 'react-native';
+
 import {BottomSheetWVCallbacks} from 'utils/webview-bridge/types/common.type';
+
+import {COLORS, TYPOGRAPHY} from 'styles/theme';
+import {pixelSizeHorizontal, pixelSizeVertical} from 'styles/normalize';
+
+import BottomSheet, {BottomSheetProps} from 'components/BottomSheet';
 
 export type Item = {
   key: string;
-  title: string;
+  title: string | ReactNode;
 };
 
 export interface ListBottomSheetProps
@@ -21,10 +27,30 @@ export default function ListBottomSheet({
   return (
     <BottomSheet {...props}>
       {items?.map(item => (
-        <Text key={item.key} onPress={() => onItemClick?.(item.key)}>
-          {item.title}
-        </Text>
+        <TouchableHighlight
+          key={item.key}
+          underlayColor={COLORS.gray500}
+          onPress={() => onItemClick?.(item.key)}>
+          {typeof item.title === 'string' ? (
+            <View style={styles.element}>
+              <Text style={[TYPOGRAPHY.body02, {color: COLORS.text100}]}>
+                {item.title}
+              </Text>
+            </View>
+          ) : (
+            item.title
+          )}
+        </TouchableHighlight>
       ))}
     </BottomSheet>
   );
 }
+
+const styles = StyleSheet.create({
+  element: {
+    width: '100%',
+    backgroundColor: COLORS.white,
+    paddingHorizontal: pixelSizeVertical(20),
+    paddingVertical: pixelSizeHorizontal(12),
+  },
+});
