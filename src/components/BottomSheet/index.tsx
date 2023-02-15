@@ -1,4 +1,10 @@
-import {COLORS, FONTS} from '@/styles/theme';
+import {
+  heightPixel,
+  pixelSizeHorizontal,
+  pixelSizeVertical,
+  widthPixel,
+} from '@/styles/normalize';
+import {COLORS, TYPOGRAPHY} from '@/styles/theme';
 import React, {PropsWithChildren, useEffect, useRef} from 'react';
 import {
   View,
@@ -91,9 +97,9 @@ const BottomSheetContainer = ({
           <View style={styles.handlingBarContainer}>
             <View style={styles.handlingBar} />
           </View>
-          <SafeAreaView>
+          <SafeAreaView style={styles.bodyContainer}>
             <View style={styles.titleContainer}>
-              <Text style={FONTS.headline03}>{title}</Text>
+              <Text style={TYPOGRAPHY.headline03}>{title}</Text>
             </View>
             <View style={styles.contentContainer}>{children}</View>
           </SafeAreaView>
@@ -116,35 +122,36 @@ const styles = StyleSheet.create({
     position: 'relative',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'white',
+    backgroundColor: COLORS.white,
     borderTopLeftRadius: 10,
     borderTopRightRadius: 10,
   },
   handlingBarContainer: {
     position: 'absolute',
-    top: -24,
-    height: 24,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingLeft: 10,
-    paddingRight: 10,
+    top: pixelSizeVertical(-16),
+    height: pixelSizeVertical(16),
+    paddingHorizontal: pixelSizeHorizontal(10),
   },
   handlingBar: {
-    width: 70,
-    height: 4,
-    backgroundColor: COLORS.gray[3],
+    width: widthPixel(60),
+    height: heightPixel(4),
+    backgroundColor: COLORS.gray300,
     borderRadius: 8,
+  },
+  bodyContainer: {
+    width: '100%',
   },
   titleContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 17,
+    paddingVertical: pixelSizeVertical(17),
     textAlign: 'center',
   },
   contentContainer: {
-    width: '100%',
-    paddingTop: 16,
-    paddingBottom: 50,
+    paddingTop: pixelSizeVertical(16),
+    paddingBottom: pixelSizeVertical(50),
   },
 });
 
