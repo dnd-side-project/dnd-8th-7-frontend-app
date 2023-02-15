@@ -1,6 +1,9 @@
 import {useState, createContext} from 'react';
-import {ListBottomSheetProps} from '@/components/BottomSheet/ListBottomSheet';
+
 import {EBottomSheetType} from '@/components/BottomSheet/types';
+
+import {ListBottomSheetProps} from '@/components/BottomSheet/ListBottomSheet';
+import {SelectBottomSheetProps} from '@/components/BottomSheet/SelectBottomSheet';
 
 interface BottomSheetsProviderProps {
   children: React.ReactElement | React.ReactElement[];
@@ -8,11 +11,12 @@ interface BottomSheetsProviderProps {
 
 type BottomSheetPropsType = {
   [EBottomSheetType.LIST]: ListBottomSheetProps;
+  [EBottomSheetType.SELECT]: SelectBottomSheetProps;
 };
 type BottomSheetStateType = {
   wvKey: string;
   key: string;
-  type: EBottomSheetType.LIST;
+  type: EBottomSheetType.LIST | EBottomSheetType.SELECT;
   props: BottomSheetPropsType[BottomSheetStateType['type']];
 };
 interface BottomSheetsDispatch {

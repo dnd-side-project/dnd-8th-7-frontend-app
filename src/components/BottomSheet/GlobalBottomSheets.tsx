@@ -43,6 +43,16 @@ export default function GlobalBottomSheets() {
                 onItemClick={handleItemClick}
               />
             );
+          case EBottomSheetType.SELECT:
+            return (
+              <ListBottomSheet
+                {...props}
+                key={key}
+                modalVisible={true}
+                onClose={handleClose}
+                onItemClick={handleItemClick}
+              />
+            );
         }
       })}
     </>
