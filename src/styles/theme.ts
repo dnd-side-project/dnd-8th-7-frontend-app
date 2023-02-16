@@ -55,4 +55,9 @@ export const TYPOGRAPHY = StyleSheet.create({
     lineHeight: fontPixel(12) * 1.3,
     letterSpacing: fontPixel(12) * -0.004,
   },
+  body03: {
+    fontSize: fontPixel(10),
+    lineHeight: fontPixel(10) * 1.3,
+    letterSpacing: fontPixel(10) * -0.004,
+  },
 });
