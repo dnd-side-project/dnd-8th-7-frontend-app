@@ -26,22 +26,24 @@ export default function ListBottomSheet({
 }: ListBottomSheetProps) {
   return (
     <BottomSheet {...props}>
-      {items?.map(item => (
-        <TouchableHighlight
-          key={item.key}
-          underlayColor={COLORS.gray500}
-          onPress={() => onItemClick?.(item.key)}>
-          {typeof item.title === 'string' ? (
-            <View style={styles.element}>
-              <Text style={[TYPOGRAPHY.body02, {color: COLORS.text100}]}>
-                {item.title}
-              </Text>
-            </View>
-          ) : (
-            item.title
-          )}
-        </TouchableHighlight>
-      ))}
+      <View style={styles.contentContainer}>
+        {items?.map(item => (
+          <TouchableHighlight
+            key={item.key}
+            underlayColor={COLORS.gray500}
+            onPress={() => onItemClick?.(item.key)}>
+            {typeof item.title === 'string' ? (
+              <View style={styles.element}>
+                <Text style={[TYPOGRAPHY.body02, {color: COLORS.text100}]}>
+                  {item.title}
+                </Text>
+              </View>
+            ) : (
+              item.title
+            )}
+          </TouchableHighlight>
+        ))}
+      </View>
     </BottomSheet>
   );
 }
@@ -52,5 +54,9 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.white,
     paddingHorizontal: pixelSizeVertical(20),
     paddingVertical: pixelSizeHorizontal(12),
+  },
+  contentContainer: {
+    paddingTop: pixelSizeVertical(16),
+    paddingBottom: pixelSizeVertical(50),
   },
 });
