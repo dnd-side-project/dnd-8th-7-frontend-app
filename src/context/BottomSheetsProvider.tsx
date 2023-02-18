@@ -1,6 +1,9 @@
 import {useState, createContext} from 'react';
-import {ListBottomSheetProps} from 'components/BottomSheet/ListBottomSheet';
+
 import {EBottomSheetType} from 'components/BottomSheet/types';
+
+import {ListBottomSheetProps} from 'components/BottomSheet/ListBottomSheet';
+import {EmojiBottomSheetProps} from 'components/BottomSheet/EmojiBottomSheet';
 
 interface BottomSheetsProviderProps {
   children: React.ReactElement | React.ReactElement[];
@@ -8,6 +11,7 @@ interface BottomSheetsProviderProps {
 
 type BottomSheetPropsType = {
   [EBottomSheetType.LIST]: ListBottomSheetProps;
+  [EBottomSheetType.EMOJI]: EmojiBottomSheetProps;
 };
 type BottomSheetType = {
   webviewKey: string;
