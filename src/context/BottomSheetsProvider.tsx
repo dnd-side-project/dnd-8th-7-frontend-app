@@ -9,14 +9,14 @@ interface BottomSheetsProviderProps {
 type BottomSheetPropsType = {
   [EBottomSheetType.LIST]: ListBottomSheetProps;
 };
-type BottomSheetStateType = {
+type BottomSheetType = {
   webviewKey: string;
   key: string;
   type: EBottomSheetType.LIST;
-  props: BottomSheetPropsType[BottomSheetStateType['type']];
+  props: BottomSheetPropsType[BottomSheetType['type']];
 };
 interface BottomSheetsDispatch {
-  open: (data: BottomSheetStateType) => void;
+  open: (data: BottomSheetType) => void;
   close: (key: string) => void;
 }
 
@@ -29,12 +29,10 @@ export const BottomSheetsDispatchContext = createContext<BottomSheetsDispatch>({
   },
 });
 
-export const BottomSheetsStateContext = createContext<BottomSheetStateType[]>(
-  [],
-);
+export const BottomSheetsContext = createContext<BottomSheetType[]>([]);
 
 const BottomSheetsProvider = ({children}: BottomSheetsProviderProps) => {
-  const [openedModals, setOpenedModals] = useState<BottomSheetStateType[]>([]);
+  const [openedModals, setOpenedModals] = useState<BottomSheetType[]>([]);
 
   const open: BottomSheetsDispatch['open'] = bottomSheet => {
     setOpenedModals(bottomSheets => [...bottomSheets, bottomSheet]);
@@ -49,11 +47,11 @@ const BottomSheetsProvider = ({children}: BottomSheetsProviderProps) => {
   const dispatch = {open, close};
 
   return (
-    <BottomSheetsStateContext.Provider value={openedModals}>
+    <BottomSheetsContext.Provider value={openedModals}>
       <BottomSheetsDispatchContext.Provider value={dispatch}>
         {children}
       </BottomSheetsDispatchContext.Provider>
-    </BottomSheetsStateContext.Provider>
+    </BottomSheetsContext.Provider>
   );
 };
 
