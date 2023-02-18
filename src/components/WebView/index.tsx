@@ -15,7 +15,7 @@ import {BottomSheetsDispatchContext} from 'context/BottomSheetsProvider';
 export default forwardRef<RNWebView, WebViewProps>((props, ref) => {
   const localRef = useRef(null);
   const myRef = ref || localRef;
-  const wvKey = useRef(generateRandomString(20));
+  const webviewKey = useRef(generateRandomString(20));
 
   const {open, close} = useContext(BottomSheetsDispatchContext);
 
@@ -29,7 +29,7 @@ export default forwardRef<RNWebView, WebViewProps>((props, ref) => {
     if (type === EWVMessageType.OPEN_BOTTOM_SHEET) {
       const {contents} = data;
       open({
-        wvKey: wvKey.current,
+        webviewKey: webviewKey.current,
         key: bottomSheetKey,
         type: contents.type,
         props: contents.props,
@@ -39,7 +39,7 @@ export default forwardRef<RNWebView, WebViewProps>((props, ref) => {
     }
   };
 
-  useWebView(wvKey.current, myRef);
+  useWebView(webviewKey.current, myRef);
 
   return <RNWebView {...props} ref={myRef} onMessage={handleMessage} />;
 });

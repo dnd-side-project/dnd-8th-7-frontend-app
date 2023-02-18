@@ -14,12 +14,12 @@ export default function GlobalBottomSheets() {
   return (
     <>
       {openedBottomSheets.map(bottomSheet => {
-        const {key, type, props, wvKey} = bottomSheet;
+        const {key, type, props, webviewKey} = bottomSheet;
 
         const handleItemClick = (value: string) => {
           props?.onItemClick?.(value);
-          if (wvKey) {
-            bottomSheetBridge.onItemClick(wvKey, key, value);
+          if (webviewKey) {
+            bottomSheetBridge.onItemClick(webviewKey, key, value);
           }
         };
 
@@ -27,8 +27,8 @@ export default function GlobalBottomSheets() {
           props?.onClose?.();
           close(key);
 
-          if (wvKey) {
-            bottomSheetBridge.onClose(wvKey, key);
+          if (webviewKey) {
+            bottomSheetBridge.onClose(webviewKey, key);
           }
         };
 

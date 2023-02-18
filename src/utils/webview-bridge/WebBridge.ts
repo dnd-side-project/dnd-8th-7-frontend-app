@@ -5,13 +5,13 @@ type WVRef = ForwardedRef<WebView<{}>>;
 export default class WebBridge {
   static webviewList = new Map<string, WVRef>();
 
-  addWebView(wvKey: string, ref: WVRef) {
-    WebBridge.webviewList.set(wvKey, ref);
+  addWebView(webviewKey: string, ref: WVRef) {
+    WebBridge.webviewList.set(webviewKey, ref);
   }
 
-  removeWebView(wvKey: string) {
-    if (WebBridge.webviewList.has(wvKey)) {
-      WebBridge.webviewList.delete(wvKey);
+  removeWebView(webviewKey: string) {
+    if (WebBridge.webviewList.has(webviewKey)) {
+      WebBridge.webviewList.delete(webviewKey);
     }
   }
 }

@@ -10,7 +10,7 @@ type BottomSheetPropsType = {
   [EBottomSheetType.LIST]: ListBottomSheetProps;
 };
 type BottomSheetStateType = {
-  wvKey: string;
+  webviewKey: string;
   key: string;
   type: EBottomSheetType.LIST;
   props: BottomSheetPropsType[BottomSheetStateType['type']];

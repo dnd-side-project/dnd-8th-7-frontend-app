@@ -23,10 +23,10 @@ export type CallbackMessageType = keyof typeof ECallbackMessageType;
 export type CallbackMessageData = {
   type: string;
   eventKey?: string;
-  data?: any;
+  data?: CallbackDataType;
 };
 export type CallbackDataType = {
-  callbackKey: string;
+  callbackKey: BottomSheetWVCallbackType;
   parameters: any;
 };
 
@@ -37,3 +37,4 @@ export type BottomSheetWVCallbacks = {
   onItemClick?: (key: string) => void;
   onClose?: () => void;
 };
+export type BottomSheetWVCallbackType = keyof BottomSheetWVCallbacks;
