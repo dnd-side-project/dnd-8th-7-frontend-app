@@ -5,7 +5,7 @@ import {
   WebViewProps,
 } from 'react-native-webview';
 
-import {generateRandomString} from 'utils/utils';
+import {generateRandomString} from 'utils';
 
 import {EWVMessageType} from 'utils/webview-bridge/types/common.type';
 import useWebView from 'utils/webview-bridge/useWebView';
