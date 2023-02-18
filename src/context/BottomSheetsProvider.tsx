@@ -1,6 +1,6 @@
 import {useState, createContext} from 'react';
-import {ListBottomSheetProps} from '@/components/BottomSheet/ListBottomSheet';
-import {EBottomSheetType} from '@/components/BottomSheet/types';
+import {ListBottomSheetProps} from 'components/BottomSheet/ListBottomSheet';
+import {EBottomSheetType} from 'components/BottomSheet/types';
 
 interface BottomSheetsProviderProps {
   children: React.ReactElement | React.ReactElement[];

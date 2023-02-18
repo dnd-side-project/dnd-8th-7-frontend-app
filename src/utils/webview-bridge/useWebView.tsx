@@ -1,7 +1,7 @@
 import {ForwardedRef, useEffect} from 'react';
 import WebView from 'react-native-webview';
 
-import webBridge from '@/utils/webview-bridge';
+import webBridge from 'utils/webview-bridge';
 
 export default function useWebView(
   webviewKey: string,

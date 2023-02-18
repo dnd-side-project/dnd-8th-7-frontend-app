@@ -9,16 +9,7 @@ module.exports = {
   settings: {
     'import/resolver': {
       node: {
-        paths: ['src'],
-        alias: {
-          '@/assets': './src/assets',
-          '@/components': './src/components',
-          '@/navigations': './src/navigations',
-          '@/screens': './src/screens',
-          '@/styles': './src/styles',
-          '@/utils': './src/utils',
-          '@/context': './src/context',
-        },
+        paths: ['./src'],
       },
     },
   },

@@ -1,4 +1,4 @@
-import {COLORS, FONTS} from '@/styles/theme';
+import {COLORS, FONTS} from 'styles/theme';
 import React, {PropsWithChildren, useEffect, useRef} from 'react';
 import {
   View,

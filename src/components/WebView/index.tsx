@@ -5,12 +5,12 @@ import {
   WebViewProps,
 } from 'react-native-webview';
 
-import {generateRandomString} from '@/utils/utils';
+import {generateRandomString} from 'utils/utils';
 
-import {EWVMessageType} from '@/utils/webview-bridge/types/common.type';
-import useWebView from '@/utils/webview-bridge/useWebView';
+import {EWVMessageType} from 'utils/webview-bridge/types/common.type';
+import useWebView from 'utils/webview-bridge/useWebView';
 
-import {BottomSheetsDispatchContext} from '@/context/BottomSheetsProvider';
+import {BottomSheetsDispatchContext} from 'context/BottomSheetsProvider';
 
 export default forwardRef<RNWebView, WebViewProps>((props, ref) => {
   const localRef = useRef(null);

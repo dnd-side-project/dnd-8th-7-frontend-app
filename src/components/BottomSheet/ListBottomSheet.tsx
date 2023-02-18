@@ -1,6 +1,6 @@
 import {Text} from 'react-native';
-import BottomSheet, {BottomSheetProps} from '@/components/BottomSheet';
-import {BottomSheetWVCallbacks} from '@/utils/webview-bridge/types/common.type';
+import BottomSheet, {BottomSheetProps} from 'components/BottomSheet';
+import {BottomSheetWVCallbacks} from 'utils/webview-bridge/types/common.type';
 
 export type Item = {
   key: string;

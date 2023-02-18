@@ -1,5 +1,5 @@
-import StackNavigation from '@/navigations/StackNavigation';
-import BottomSheetsProvider from '@/context/BottomSheetsProvider';
+import StackNavigation from 'navigations/StackNavigation';
+import BottomSheetsProvider from 'context/BottomSheetsProvider';
 import GlobalBottomSheets from './components/BottomSheet/GlobalBottomSheets';
 
 function App() {

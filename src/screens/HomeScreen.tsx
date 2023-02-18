@@ -1,4 +1,4 @@
-import WebView from '@/components/WebView';
+import WebView from 'components/WebView';
 import {Dimensions, View} from 'react-native';
 
 export default function HomeScreen() {
