@@ -27,7 +27,7 @@ export type CallbackMessageData = {
 };
 export type CallbackDataType = {
   callbackKey: BottomSheetWVCallbackType;
-  parameters: any;
+  parameters?: any;
 };
 
 /**
