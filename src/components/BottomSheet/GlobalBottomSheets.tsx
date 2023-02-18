@@ -1,14 +1,14 @@
 import React, {useContext} from 'react';
 import {
   BottomSheetsDispatchContext,
-  BottomSheetsStateContext,
+  BottomSheetsContext,
 } from 'context/BottomSheetsProvider';
 import ListBottomSheet from 'components/BottomSheet/ListBottomSheet';
 import {EBottomSheetType} from './types';
 import bottomSheetBridge from 'utils/webview-bridge/bridges/bottomsheetBridge';
 
 export default function GlobalBottomSheets() {
-  const openedBottomSheets = useContext(BottomSheetsStateContext);
+  const openedBottomSheets = useContext(BottomSheetsContext);
   const {close} = useContext(BottomSheetsDispatchContext);
 
   return (

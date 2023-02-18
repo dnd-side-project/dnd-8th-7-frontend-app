@@ -1,6 +1,6 @@
 import StackNavigation from 'navigations/StackNavigation';
 import BottomSheetsProvider from 'context/BottomSheetsProvider';
-import GlobalBottomSheets from './components/BottomSheet/GlobalBottomSheets';
+import GlobalBottomSheets from 'components/BottomSheet/GlobalBottomSheets';
 
 function App() {
   return (
