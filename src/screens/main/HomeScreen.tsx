@@ -1,5 +1,5 @@
-import CustomSafeAreaView from '@/components/CustomSafeAreaView';
-import WebView from '@/components/WebView';
+import CustomSafeAreaView from 'components/CustomSafeAreaView';
+import WebView from 'components/WebView';
 
 export default function HomeScreen() {
   return (

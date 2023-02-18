@@ -1,7 +1,7 @@
 import {PropsWithChildren} from 'react';
 import {Dimensions, SafeAreaView} from 'react-native';
 
-import {COLORS} from '@/styles/theme';
+import {COLORS} from 'styles/theme';
 
 export default function CustomSafeAreaView({children}: PropsWithChildren) {
   return (
