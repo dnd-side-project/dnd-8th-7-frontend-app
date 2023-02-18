@@ -10,7 +10,7 @@ import BottomSheet, {BottomSheetProps} from 'components/BottomSheet';
 
 export type Item = {
   key: string;
-  title: string | ReactNode;
+  title: ReactNode;
 };
 
 export interface ListBottomSheetProps
