@@ -1,13 +1,13 @@
 import StackNavigation from 'navigations/StackNavigation';
-import BottomSheetsProvider from 'context/BottomSheetsProvider';
+import GlobalComponentProvider from 'context/GlobalComponentProvider';
 import GlobalBottomSheets from 'components/BottomSheet/GlobalBottomSheets';
 
 function App() {
   return (
-    <BottomSheetsProvider>
+    <GlobalComponentProvider>
       <StackNavigation />
       <GlobalBottomSheets />
-    </BottomSheetsProvider>
+    </GlobalComponentProvider>
   );
 }
 

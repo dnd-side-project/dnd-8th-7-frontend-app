@@ -1,15 +1,12 @@
 import React, {useContext} from 'react';
 
-import {
-  BottomSheetsDispatchContext,
-  BottomSheetsContext,
-} from 'context/BottomSheetsProvider';
 import bottomSheetBridge from 'utils/webview-bridge/bridges/bottomsheetBridge';
 
 import {EBottomSheetType} from './types';
 
 import ListBottomSheet from 'components/BottomSheet/ListBottomSheet';
 import EmojiBottomSheet from 'components/BottomSheet/EmojiBottomSheet';
+import {GlobalComponentContext} from 'context/GlobalComponentProvider';
 
 const BottomSheetComponent = {
   [EBottomSheetType.LIST]: ListBottomSheet,
@@ -17,12 +14,11 @@ const BottomSheetComponent = {
 };
 
 export default function GlobalBottomSheets() {
-  const openedBottomSheets = useContext(BottomSheetsContext);
-  const {close} = useContext(BottomSheetsDispatchContext);
+  const {bottomSheets} = useContext(GlobalComponentContext);
 
   return (
     <>
-      {openedBottomSheets.map(bottomSheet => {
+      {bottomSheets.list.map(bottomSheet => {
         const {key, type, props, webviewKey} = bottomSheet;
 
         const handleItemClick = (value: string) => {
@@ -34,7 +30,7 @@ export default function GlobalBottomSheets() {
 
         const handleClose = () => {
           props?.onClose?.();
-          close(key);
+          bottomSheets.close(key);
 
           if (webviewKey) {
             bottomSheetBridge.onClose(webviewKey, key);
