@@ -143,6 +143,7 @@ const styles = StyleSheet.create({
   },
   bodyContainer: {
     width: '100%',
+    maxHeight: Dimensions.get('screen').height / 2,
   },
   titleContainer: {
     justifyContent: 'center',
