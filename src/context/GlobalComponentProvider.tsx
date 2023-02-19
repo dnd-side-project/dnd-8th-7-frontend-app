@@ -14,16 +14,16 @@ export const GlobalComponentContext = createContext<ContextText>(
 );
 
 const useBottomSheetContext = () => {
-  const [openedModals, setOpenedModals] = useState<BottomSheetsContext['list']>(
-    [],
-  );
+  const [openedBottomSheets, setOpenedBottomSheets] = useState<
+    BottomSheetsContext['list']
+  >([]);
   const bottomSheetAction = useMemo(() => {
     const open: BottomSheetsContext['open'] = bottomSheet => {
-      setOpenedModals(bottomSheets => [...bottomSheets, bottomSheet]);
+      setOpenedBottomSheets(bottomSheets => [...bottomSheets, bottomSheet]);
     };
 
     const close: BottomSheetsContext['close'] = key => {
-      setOpenedModals(bottomSheets =>
+      setOpenedBottomSheets(bottomSheets =>
         bottomSheets.filter(bottomSheet => bottomSheet.key !== key),
       );
     };
@@ -31,7 +31,7 @@ const useBottomSheetContext = () => {
     return {open, close};
   }, []);
 
-  return {...bottomSheetAction, list: openedModals};
+  return {...bottomSheetAction, list: openedBottomSheets};
 };
 
 const GlobalComponentProvider = ({children}: GlobalComponentProviderProps) => {
