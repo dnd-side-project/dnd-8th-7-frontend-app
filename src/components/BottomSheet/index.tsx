@@ -100,7 +100,9 @@ const BottomSheetContainer = ({
           </View>
           <SafeAreaView style={styles.bodyContainer}>
             <View style={styles.titleContainer} {...panResponders.panHandlers}>
-              <Text style={TYPOGRAPHY.headline03}>{title}</Text>
+              <Text style={[TYPOGRAPHY.headline03, styles.blackText]}>
+                {title}
+              </Text>
             </View>
             <View>{children}</View>
           </SafeAreaView>
@@ -150,6 +152,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: pixelSizeVertical(17),
     textAlign: 'center',
+  },
+  blackText: {
+    color: COLORS.black,
   },
 });
 
