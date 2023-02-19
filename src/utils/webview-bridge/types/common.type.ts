@@ -6,6 +6,8 @@
 export enum EWVMessageType {
   OPEN_BOTTOM_SHEET = 'OPEN_BOTTOM_SHEET',
   CLOSE_BOTTOM_SHEET = 'CLOSE_BOTTOM_SHEET',
+  OPEN_NEW_WEBVIEW = 'OPEN_NEW_WEBVIEW',
+  CLOSE_NEW_WEBVIEW = 'CLOSE_NEW_WEBVIEW',
 }
 export type WVMessageType = keyof typeof EWVMessageType;
 export type WVMessageData<T = Record<string | number, unknown>> = {

@@ -8,3 +8,5 @@ export const generateRandomString = (length = 20) => {
 
   return result;
 };
+
+export const noop = () => {};
