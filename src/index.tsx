@@ -1,13 +1,17 @@
+import {NavigationContainer} from '@react-navigation/native';
 import StackNavigation from 'navigations/StackNavigation';
-import GlobalComponentProvider from 'context/GlobalComponentProvider';
-import GlobalBottomSheets from 'components/BottomSheet/GlobalBottomSheets';
 
+import GlobalComponentProvider from 'context/GlobalComponentProvider';
+
+import GlobalBottomSheets from 'components/BottomSheet/GlobalBottomSheets';
 function App() {
   return (
-    <GlobalComponentProvider>
-      <StackNavigation />
-      <GlobalBottomSheets />
-    </GlobalComponentProvider>
+    <NavigationContainer>
+      <GlobalComponentProvider>
+        <StackNavigation />
+        <GlobalBottomSheets />
+      </GlobalComponentProvider>
+    </NavigationContainer>
   );
 }
 
