@@ -1,11 +1,20 @@
 import React, {useContext} from 'react';
+
 import {
   BottomSheetsDispatchContext,
   BottomSheetsContext,
 } from 'context/BottomSheetsProvider';
-import ListBottomSheet from 'components/BottomSheet/ListBottomSheet';
-import {EBottomSheetType} from './types';
 import bottomSheetBridge from 'utils/webview-bridge/bridges/bottomsheetBridge';
+
+import {EBottomSheetType} from './types';
+
+import ListBottomSheet from 'components/BottomSheet/ListBottomSheet';
+import EmojiBottomSheet from 'components/BottomSheet/EmojiBottomSheet';
+
+const BottomSheetComponent = {
+  [EBottomSheetType.LIST]: ListBottomSheet,
+  [EBottomSheetType.EMOJI]: EmojiBottomSheet,
+};
 
 export default function GlobalBottomSheets() {
   const openedBottomSheets = useContext(BottomSheetsContext);
@@ -32,18 +41,16 @@ export default function GlobalBottomSheets() {
           }
         };
 
-        switch (type) {
-          case EBottomSheetType.LIST:
-            return (
-              <ListBottomSheet
-                {...props}
-                key={key}
-                modalVisible={true}
-                onClose={handleClose}
-                onItemClick={handleItemClick}
-              />
-            );
-        }
+        const BottomSheet = BottomSheetComponent[type];
+        return (
+          <BottomSheet
+            {...props}
+            key={key}
+            modalVisible={true}
+            onClose={handleClose}
+            onItemClick={handleItemClick}
+          />
+        );
       })}
     </>
   );

@@ -92,16 +92,17 @@ const BottomSheetContainer = ({
           style={{
             ...styles.bottomSheetContainer,
             transform: [{translateY}],
-          }}
-          {...panResponders.panHandlers}>
-          <View style={styles.handlingBarContainer}>
+          }}>
+          <View
+            style={styles.handlingBarContainer}
+            {...panResponders.panHandlers}>
             <View style={styles.handlingBar} />
           </View>
           <SafeAreaView style={styles.bodyContainer}>
-            <View style={styles.titleContainer}>
+            <View style={styles.titleContainer} {...panResponders.panHandlers}>
               <Text style={TYPOGRAPHY.headline03}>{title}</Text>
             </View>
-            <View style={styles.contentContainer}>{children}</View>
+            <View>{children}</View>
           </SafeAreaView>
         </Animated.View>
       </View>
@@ -148,10 +149,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingVertical: pixelSizeVertical(17),
     textAlign: 'center',
-  },
-  contentContainer: {
-    paddingTop: pixelSizeVertical(16),
-    paddingBottom: pixelSizeVertical(50),
   },
 });
 
