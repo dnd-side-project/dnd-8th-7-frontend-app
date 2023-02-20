@@ -8,6 +8,7 @@ import CustomSafeAreaView from 'components/CustomSafeAreaView';
 import Button from 'components/Button';
 import TypoGraphy from 'components/Typography';
 import Slider, {SliderHandleRef} from 'components/Slider';
+import GoogleLogInButton from 'components/Button/GoogleLogIn';
 
 const ONBOARDING_MOCK_DATA = [
   {
@@ -87,7 +88,11 @@ export default function OnboardingPage() {
           onChange={cur => setCurPage(cur)}
         />
         <View style={{marginBottom: widthPixel(20)}}>
-          <Button onPress={handleNextPress}>다음</Button>
+          {curPage !== ONBOARDING_MOCK_DATA.length - 1 ? (
+            <Button onPress={handleNextPress}>다음</Button>
+          ) : (
+            <GoogleLogInButton />
+          )}
         </View>
       </View>
     </CustomSafeAreaView>
