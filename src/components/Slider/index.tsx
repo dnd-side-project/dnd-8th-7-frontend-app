@@ -134,7 +134,6 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     width: widthPixel(260),
     height: widthPixel(324),
-    backgroundColor: COLORS.gray100,
   },
   image: {
     width: '100%',

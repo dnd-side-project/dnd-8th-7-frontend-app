@@ -30,7 +30,7 @@ const ONBOARDING_MOCK_DATA = [
   },
   {
     title: '한달 리포트에서\n블럭 달성률을 확인하는',
-    description: 'n가장 달성률이 높은 블럭은 뭘까요?',
+    description: '가장 달성률이 높은 블럭은 뭘까요?',
     imageUrl:
       'https://i.pinimg.com/564x/87/f2/b5/87f2b5bfb4af3cfa0ed36501ec4df5b9.jpg',
   },
