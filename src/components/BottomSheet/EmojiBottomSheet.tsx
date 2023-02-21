@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     paddingTop: pixelSizeVertical(16),
     paddingBottom: pixelSizeVertical(20),
     paddingHorizontal: pixelSizeHorizontal(30),
-    maxHeight: 350,
   },
   wrapper: {
     justifyContent: 'space-between',
