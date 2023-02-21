@@ -54,12 +54,12 @@ export default function OnboardingPage() {
     Animated.parallel([
       Animated.timing(transformAnim, {
         toValue: 1,
-        duration: 250,
+        duration: 600,
         useNativeDriver: true,
       }),
       Animated.timing(fadeAnim, {
         toValue: 1,
-        duration: 250,
+        duration: 600,
         useNativeDriver: true,
       }),
     ]).start();
@@ -107,11 +107,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: pixelSizeHorizontal(20),
     justifyContent: 'space-between',
   },
-  headlineContainer: {},
   title: {
     marginTop: widthPixel(70),
     marginBottom: widthPixel(8),
     textAlign: 'center',
+    color: COLORS.black,
   },
   description: {
     textAlign: 'center',

@@ -30,7 +30,7 @@ export default forwardRef<SliderHandleRef, Props>(function Slider(
   const moveImage = (page: number) =>
     Animated.timing(panX, {
       toValue: -(page * imageWidth),
-      duration: 100,
+      duration: 300,
       useNativeDriver: true,
     });
 
