@@ -21,6 +21,12 @@ export const COLORS = {
 };
 
 export const TYPOGRAPHY = StyleSheet.create({
+  headline00: {
+    fontWeight: '700',
+    fontSize: fontPixel(22),
+    lineHeight: fontPixel(22) * 1.4,
+    letterSpacing: fontPixel(22) * -0.006,
+  },
   headline01: {
     fontWeight: '700',
     fontSize: fontPixel(20),
@@ -61,3 +67,5 @@ export const TYPOGRAPHY = StyleSheet.create({
     letterSpacing: fontPixel(10) * -0.004,
   },
 });
+
+export type TypographyType = keyof typeof TYPOGRAPHY;
