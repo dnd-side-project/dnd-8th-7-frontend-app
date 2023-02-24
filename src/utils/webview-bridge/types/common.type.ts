@@ -8,12 +8,19 @@ export enum EWVMessageType {
   CLOSE_BOTTOM_SHEET = 'CLOSE_BOTTOM_SHEET',
   OPEN_NEW_WEBVIEW = 'OPEN_NEW_WEBVIEW',
   CLOSE_NEW_WEBVIEW = 'CLOSE_NEW_WEBVIEW',
+  ACTION = 'ACTION',
 }
 export type WVMessageType = keyof typeof EWVMessageType;
 export type WVMessageData<T = Record<string | number, unknown>> = {
   eventKey: string;
   contents?: T;
 };
+
+export enum ACTION_TYPE {
+  GO_MAIN = 'GO_MAIN',
+  LOGOUT = 'LOGOUT',
+}
+export type ActionType = keyof typeof ACTION_TYPE;
 
 /**
  * @description RN -> WebView 보낼 수 있는 메세지 종류

@@ -9,7 +9,7 @@ import {
   ProfileScreen,
 } from 'screens/main';
 
-import {NAVIGATION_PATH} from 'utils/constants';
+import {BOTTOM_TAB_NAVIGATION_PATH} from 'utils/constants';
 
 import {HomeIcon, ReportIcon, SocialIcon, MyPageIcon} from 'components/icons';
 import {COLORS, TYPOGRAPHY} from 'styles/theme';
@@ -18,9 +18,10 @@ const Tab = createBottomTabNavigator();
 
 export default function TabNavigation() {
   return (
-    <Tab.Navigator screenOptions={{headerShown: false}}>
+    <Tab.Navigator
+      screenOptions={{headerShown: false, tabBarHideOnKeyboard: true}}>
       <Tab.Screen
-        navigationKey={NAVIGATION_PATH.HOME}
+        navigationKey={BOTTOM_TAB_NAVIGATION_PATH.HOME}
         name="홈"
         component={HomeScreen}
         options={{
@@ -29,7 +30,7 @@ export default function TabNavigation() {
         }}
       />
       <Tab.Screen
-        navigationKey={NAVIGATION_PATH.REPORT}
+        navigationKey={BOTTOM_TAB_NAVIGATION_PATH.REPORT}
         name="리포트"
         component={ReportScreen}
         options={{
@@ -38,7 +39,7 @@ export default function TabNavigation() {
         }}
       />
       <Tab.Screen
-        navigationKey={NAVIGATION_PATH.SOCIAL}
+        navigationKey={BOTTOM_TAB_NAVIGATION_PATH.SOCIAL}
         name="소셜"
         component={SocialScreen}
         options={{
@@ -47,7 +48,7 @@ export default function TabNavigation() {
         }}
       />
       <Tab.Screen
-        navigationKey={NAVIGATION_PATH.PROFILE}
+        navigationKey={BOTTOM_TAB_NAVIGATION_PATH.PROFILE}
         name="프로필"
         component={ProfileScreen}
         options={{
