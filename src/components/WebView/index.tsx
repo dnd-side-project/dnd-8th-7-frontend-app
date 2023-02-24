@@ -4,11 +4,16 @@ import {
   WebViewMessageEvent,
   WebViewProps,
 } from 'react-native-webview';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, CommonActions} from '@react-navigation/native';
 
 import {generateRandomString} from 'utils';
+import {STACK_NAVIGATION_PATH} from 'utils/constants';
 
-import {EWVMessageType} from 'utils/webview-bridge/types/common.type';
+import {
+  ActionType,
+  ACTION_TYPE,
+  EWVMessageType,
+} from 'utils/webview-bridge/types/common.type';
 import {FullWebViewScreenNavigationProp} from 'types/common.type';
 
 import useWebView from 'utils/webview-bridge/useWebView';
@@ -29,22 +34,46 @@ export default forwardRef<RNWebView, WebViewProps>((props, ref) => {
     const webViewData = JSON.parse(e.nativeEvent.data);
     const {type, data} = webViewData;
 
-    const eventKey = data.eventKey;
+    if (type === EWVMessageType.ACTION) {
+      const action = webViewData.action as ActionType;
+      switch (action) {
+        case ACTION_TYPE.GO_MAIN:
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 1,
+              routes: [{name: STACK_NAVIGATION_PATH.MAIN}],
+            }),
+          );
+          break;
+        case ACTION_TYPE.LOGOUT:
+          /** TODO LOGOUT 로직 추가 */
+          navigation.dispatch(
+            CommonActions.reset({
+              index: 1,
+              routes: [{name: STACK_NAVIGATION_PATH.ONBOARDING}],
+            }),
+          );
+          break;
+      }
+    }
+
     if (type === EWVMessageType.OPEN_BOTTOM_SHEET) {
       const {contents} = data;
       bottomSheets.open({
         webviewKey: webviewKey.current,
-        key: eventKey,
+        key: data.eventKey,
         type: contents.type,
         props: contents.props,
       });
     } else if (type === EWVMessageType.CLOSE_BOTTOM_SHEET) {
-      bottomSheets.close(eventKey);
+      bottomSheets.close(data.eventKey);
     }
 
     if (type === EWVMessageType.OPEN_NEW_WEBVIEW) {
       const {contents} = data;
-      navigation.navigate('FullWebView', {url: contents.url});
+      navigation.navigate(STACK_NAVIGATION_PATH.FULL_WEBVIEW, {
+        url: contents.url,
+      });
     } else if (type === EWVMessageType.CLOSE_NEW_WEBVIEW) {
       navigation.goBack();
     }
