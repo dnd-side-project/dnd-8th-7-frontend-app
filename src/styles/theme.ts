@@ -57,14 +57,14 @@ export const TYPOGRAPHY = StyleSheet.create({
     letterSpacing: fontPixel(16) * -0.004,
   },
   body02: {
+    fontSize: fontPixel(14),
+    lineHeight: fontPixel(14) * 1.4,
+    letterSpacing: fontPixel(14) * -0.004,
+  },
+  body03: {
     fontSize: fontPixel(12),
     lineHeight: fontPixel(12) * 1.3,
     letterSpacing: fontPixel(12) * -0.004,
-  },
-  body03: {
-    fontSize: fontPixel(10),
-    lineHeight: fontPixel(10) * 1.3,
-    letterSpacing: fontPixel(10) * -0.004,
   },
 });
 
