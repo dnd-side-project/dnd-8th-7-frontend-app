@@ -1,13 +1,20 @@
 import {RouteProp, useRoute} from '@react-navigation/native';
-import CustomSafeAreaView from 'components/CustomSafeAreaView';
+
+import withAccessToken from 'hoc/withAccessToken';
 import {RouteParams} from 'types/common.type';
+
+import CustomSafeAreaView from 'components/CustomSafeAreaView';
 import WebView from 'components/WebView';
 
 interface Props {
+  accessToken: string;
   url?: string;
 }
 
-export default function FullWebViewScreen({url}: Props) {
+export default withAccessToken(function FullWebViewScreen({
+  accessToken,
+  url,
+}: Props) {
   const route = useRoute<RouteProp<RouteParams, 'fullWebViewParams'>>();
   let uri = route.params?.url || url || '';
 
@@ -16,7 +23,15 @@ export default function FullWebViewScreen({url}: Props) {
    */
   return (
     <CustomSafeAreaView>
-      <WebView source={{uri}} automaticallyAdjustContentInsets={false} />
+      <WebView
+        source={{
+          uri,
+          headers: {
+            Authorization: accessToken,
+          },
+        }}
+        automaticallyAdjustContentInsets={false}
+      />
     </CustomSafeAreaView>
   );
-}
+});
