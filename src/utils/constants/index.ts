@@ -9,6 +9,7 @@ export const HARUBLOCK_ORIGIN = 'https://harublock.vercel.app';
 export const API_URL = 'https://api.harublock.store';
 
 export enum STACK_NAVIGATION_PATH {
+  SPLASH = 'SPLASH',
   ONBOARDING = 'ONBOARDING',
   MAIN = 'MAIN',
   FULL_WEBVIEW = 'FULL_WEBVIEW',
