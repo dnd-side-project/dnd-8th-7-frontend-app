@@ -16,7 +16,7 @@ export default withAccessToken(function FullWebViewScreen({
   url,
 }: Props) {
   const route = useRoute<RouteProp<RouteParams, 'fullWebViewParams'>>();
-  let uri = route.params?.url || url || '';
+  const uri = route.params?.url || url || '';
 
   /**
    * TODO uri undefined일 경우 화면 처리
@@ -31,6 +31,7 @@ export default withAccessToken(function FullWebViewScreen({
           },
         }}
         automaticallyAdjustContentInsets={false}
+        scrollEnabled={false}
       />
     </CustomSafeAreaView>
   );
