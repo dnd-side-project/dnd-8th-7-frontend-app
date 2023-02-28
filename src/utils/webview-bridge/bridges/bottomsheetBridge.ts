@@ -1,17 +1,6 @@
+import {isRefExisted} from 'utils/webview-bridge';
 import {CallbackMessageData, ECallbackMessageType} from '../types/common.type';
 import WebBridge from '../WebBridge';
-
-const isRefExisted = (webviewKey: string) => {
-  if (!WebBridge.webviewList.has(webviewKey)) return false;
-
-  const ref = WebBridge.webviewList.get(webviewKey);
-  if (!ref) {
-    WebBridge.webviewList.delete(webviewKey);
-    return false;
-  }
-
-  return true;
-};
 
 const onItemClick = (webviewKey: string, eventKey: string, value: string) => {
   if (!isRefExisted(webviewKey)) return;
