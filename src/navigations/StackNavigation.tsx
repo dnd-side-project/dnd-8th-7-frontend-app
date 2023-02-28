@@ -1,6 +1,7 @@
 import {useEffect} from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
+import {setTokenInAxiosInstance} from 'api';
 import {STACK_NAVIGATION_PATH} from 'utils/constants';
 import {authStorage} from 'stores';
 import useShortNavigation from 'hooks/useShortNavigation';
@@ -19,7 +20,11 @@ export default function StackNavigation() {
   useEffect(() => {
     authStorage
       .get()
-      .then(() => resetToMainScreen())
+      .then(token => {
+        if (!token?.accessToken) throw new Error();
+        setTokenInAxiosInstance(token);
+        resetToMainScreen();
+      })
       .catch(() => logout());
   }, []);
 

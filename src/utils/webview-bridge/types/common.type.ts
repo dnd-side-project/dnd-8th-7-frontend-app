@@ -8,6 +8,7 @@ export enum EWVMessageType {
   CLOSE_BOTTOM_SHEET = 'CLOSE_BOTTOM_SHEET',
   OPEN_NEW_WEBVIEW = 'OPEN_NEW_WEBVIEW',
   CLOSE_NEW_WEBVIEW = 'CLOSE_NEW_WEBVIEW',
+  PICK_IMAGE_FROM_LIBRARY = 'PICK_IMAGE_FROM_LIBRARY',
   ACTION = 'ACTION',
 }
 export type WVMessageType = keyof typeof EWVMessageType;
@@ -35,7 +36,7 @@ export type CallbackMessageData = {
   data?: CallbackDataType;
 };
 export type CallbackDataType = {
-  callbackKey: BottomSheetWVCallbackType;
+  callbackKey: WebViewCallbackTypes;
   parameters?: any;
 };
 
@@ -47,3 +48,11 @@ export type BottomSheetWVCallbacks = {
   onClose?: () => void;
 };
 export type BottomSheetWVCallbackType = keyof BottomSheetWVCallbacks;
+
+export type ImagePickerWVCallbacks = {
+  onImagePick?: (url: string) => void;
+};
+export type ImagePickerWVCallbackType = keyof ImagePickerWVCallbacks;
+export type WebViewCallbackTypes =
+  | BottomSheetWVCallbackType
+  | ImagePickerWVCallbackType;

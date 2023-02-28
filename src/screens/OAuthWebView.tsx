@@ -4,7 +4,11 @@ import {RouteProp, useRoute} from '@react-navigation/native';
 import qs from 'query-string';
 
 import {authStorage} from 'stores';
-import {HARUBLOCK_ORIGIN} from 'utils/constants';
+import {
+  BASE_URL,
+  HARUBLOCK_ORIGIN,
+  STACK_NAVIGATION_PATH,
+} from 'utils/constants';
 import useShortNavigation from 'hooks/useShortNavigation';
 import {RouteParams} from 'types/common.type';
 
@@ -17,9 +21,9 @@ interface Props {
 const loginCallbackUrl = HARUBLOCK_ORIGIN + '/login/callback';
 
 export default function OAuthWebViewScreen({url}: Props) {
-  const {navigation, resetToMainScreen} = useShortNavigation();
+  const {navigation, resetToMainScreen, resetScreenTo} = useShortNavigation();
   const route = useRoute<RouteProp<RouteParams, 'oauthWebViewParams'>>();
-  let uri = route.params?.url || url || '';
+  const uri = route.params?.url || url || '';
 
   const handleNavigationStateChange = async (e: WebViewNavigation) => {
     const {query, url: webviewUrl} = qs.parseUrl(e.url);
@@ -35,7 +39,15 @@ export default function OAuthWebViewScreen({url}: Props) {
     }
 
     await authStorage.set({accessToken: query.token});
-    resetToMainScreen();
+
+    if (query.isNewUser === 'true') {
+      resetScreenTo({
+        name: STACK_NAVIGATION_PATH.FULL_WEBVIEW,
+        params: {url: BASE_URL + '/profiles/new/agreements'},
+      });
+    } else {
+      resetToMainScreen();
+    }
   };
 
   /**
@@ -52,6 +64,7 @@ export default function OAuthWebViewScreen({url}: Props) {
             ? 'Chrome/18.0.1025.133 Mobile Safari/535.19'
             : 'AppleWebKit/602.1.50 (KHTML, like Gecko) CriOS/56.0.2924.75'
         }
+        scrollEnabled={false}
       />
     </CustomSafeAreaView>
   );
