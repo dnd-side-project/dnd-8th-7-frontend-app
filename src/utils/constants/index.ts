@@ -1,7 +1,7 @@
 /**
  * TODO dev, prod 구분하여 삽입
  */
-export const BASE_URL = 'http://localhost:3000';
+export const BASE_URL = 'https://harublock.vercel.app';
 // export const BASE_URL =
 //   'https://dnd-8th-7-frontend-git-staging-eun-seong.vercel.app';
 export const HARUBLOCK_ORIGIN = 'https://harublock.vercel.app';
