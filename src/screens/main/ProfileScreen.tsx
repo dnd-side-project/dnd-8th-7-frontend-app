@@ -1,10 +1,22 @@
-import CustomSafeAreaView from 'components/CustomSafeAreaView';
-import {Text} from 'react-native';
+import {BASE_URL} from 'utils/constants';
 
-export default function ProfileScreen() {
+import withAccessToken from 'hoc/withAccessToken';
+
+import CustomSafeAreaView from 'components/CustomSafeAreaView';
+import WebView from 'components/WebView';
+
+export default withAccessToken(function ProfileScreen({accessToken}) {
   return (
     <CustomSafeAreaView>
-      <Text>profile screen</Text>
+      <WebView
+        source={{
+          uri: `${BASE_URL}/profile`,
+          headers: {
+            Authorization: accessToken,
+          },
+        }}
+        automaticallyAdjustContentInsets={false}
+      />
     </CustomSafeAreaView>
   );
-}
+});

@@ -28,4 +28,8 @@ export type RouteParams = {
   fullWebViewParams: {
     url: string;
   };
+  oauthWebViewParams: {
+    type: 'google';
+    url: string;
+  };
 };

@@ -1,15 +1,22 @@
 import {BASE_URL} from 'utils/constants';
 
+import withAccessToken from 'hoc/withAccessToken';
+
 import CustomSafeAreaView from 'components/CustomSafeAreaView';
 import WebView from 'components/WebView';
 
-export default function HomeScreen() {
+export default withAccessToken(function HomeScreen({accessToken}) {
   return (
     <CustomSafeAreaView>
       <WebView
-        source={{uri: `${BASE_URL}/home`}}
+        source={{
+          uri: `${BASE_URL}/home`,
+          headers: {
+            Authorization: accessToken,
+          },
+        }}
         automaticallyAdjustContentInsets={false}
       />
     </CustomSafeAreaView>
   );
-}
+});

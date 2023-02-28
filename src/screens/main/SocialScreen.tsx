@@ -1,10 +1,22 @@
-import CustomSafeAreaView from 'components/CustomSafeAreaView';
-import {Text} from 'react-native';
+import {BASE_URL} from 'utils/constants';
 
-export default function SocialScreen() {
+import withAccessToken from 'hoc/withAccessToken';
+
+import CustomSafeAreaView from 'components/CustomSafeAreaView';
+import WebView from 'components/WebView';
+
+export default withAccessToken(function SocialScreen({accessToken}) {
   return (
     <CustomSafeAreaView>
-      <Text>Social screen</Text>
+      <WebView
+        source={{
+          uri: `${BASE_URL}/social`,
+          headers: {
+            Authorization: accessToken,
+          },
+        }}
+        automaticallyAdjustContentInsets={false}
+      />
     </CustomSafeAreaView>
   );
-}
+});
