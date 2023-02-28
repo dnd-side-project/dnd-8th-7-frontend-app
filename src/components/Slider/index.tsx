@@ -27,16 +27,16 @@ export default forwardRef<SliderHandleRef, Props>(function Slider(
   const imageWidth = widthPixel(260);
   const panX = useRef(new Animated.Value(curPage)).current;
 
-  const moveImage = (page: number) =>
+  const moveImage = (page: number, duration = 300) =>
     Animated.timing(panX, {
       toValue: -(page * imageWidth),
-      duration: 300,
+      duration,
       useNativeDriver: true,
     });
 
-  const handleMoveImage = (page: number) => {
+  const handleMoveImage = (page: number, duration = 300) => {
     onChange?.(page, curPage);
-    moveImage(page).start();
+    moveImage(page, duration).start();
     setCurPage(page);
   };
 
@@ -48,15 +48,15 @@ export default forwardRef<SliderHandleRef, Props>(function Slider(
     },
     onPanResponderRelease: (_, gestureState) => {
       if (
-        Math.abs(gestureState.vx) > 1 ||
+        Math.abs(gestureState.vx) > 0.7 ||
         Math.abs(gestureState.dx) > imageWidth * 0.8
       ) {
         if (gestureState.dx > 0) {
           const nextPage = Math.max(0, curPage - 1);
-          handleMoveImage(nextPage);
+          handleMoveImage(nextPage, 100);
         } else {
           const nextPage = Math.min(sliderSize - 1, curPage + 1);
-          handleMoveImage(nextPage);
+          handleMoveImage(nextPage, 100);
         }
       } else {
         moveImage(curPage).start();
