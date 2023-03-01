@@ -5,12 +5,12 @@ import {
   WebViewProps,
 } from 'react-native-webview';
 import {useNavigation} from '@react-navigation/native';
-import {Platform} from 'react-native';
+import {Linking, Platform} from 'react-native';
 
 import {GlobalComponentContext} from 'context/GlobalComponentProvider';
 
 import {generateRandomString, requestCameraPermissionAndroid} from 'utils';
-import {webviewLaunchImageLibrary} from 'utils/webview-bridge/image-picker/imagePickerBridge';
+import {webviewLaunchImageLibrary} from 'utils/webview-bridge/bridges/imagePickerBridge';
 import {STACK_NAVIGATION_PATH} from 'utils/constants';
 import useWebView from 'utils/webview-bridge/useWebView';
 import useShortNavigation from 'hooks/useShortNavigation';
@@ -85,6 +85,14 @@ export default forwardRef<RNWebView, WebViewProps>((props, ref) => {
       }
       if (canUse) {
         webviewLaunchImageLibrary(webviewKey.current, data.eventKey);
+      }
+    }
+
+    if (type === EWVMessageType.OPEN_EXTERNAL_BRWOSER) {
+      const {contents} = data;
+
+      if (contents.type === 'url') {
+        Linking.openURL(contents.url);
       }
     }
   };
